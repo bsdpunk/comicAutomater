@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\usepackage[most]{tcolorbox}
+
+\begin{document}
+
+\begin{tcbposter}[
+poster = {%showframe,
+            height=3cm,spacing=2mm,rows=2},
+boxes = {colframe=blue!50!black,colback=blue!50,colupper=yellow!50},
+]
+\posterbox{name=A,column=1,below=top}{First box}
+\posterbox[rotate=-5]{name=B,column=1,between=A and bottom}{Second box}
+\posterbox{name=C,column=2,above=bottom}{Third box}
+\posterbox[rotate=-15]{name=D,column=2,between=top and C,span=2}{Fourth box}
+\posterbox[colback=red, remember as=X]{name=E,column=3,between=top and bottom}{Fifth box}
+\end{tcbposter}\\[2cm]
+\begin{tcbposter}[
+poster = {%showframe,
+            height=4cm,spacing=1mm,rows=2},
+boxes = {colframe=blue!50!black,colback=blue!50,colupper=yellow!50},
+]
+\posterbox[remember as=A]{name=A,column=1,below=top, span=2}{First box}
+\posterbox[rotate=5, colback=orange]{name=B,column=1,between=A and bottom}{Second box}
+\posterbox{name=C,column=2,above=bottom}{Third box}
+\posterbox[rotate=3]{name=D,column=2,between=top and C,span=2}{Fourth box}
+\posterbox[colback=green, rotate=-5]{name=E,column=3,between=top and bottom}{Fifth box}
+\end{tcbposter}
+
+\tikz[remember picture, overlay] \draw[line width=1mm, cyan] (A.north) to[out=60,in=30] (X.south);
+
+\end{document}

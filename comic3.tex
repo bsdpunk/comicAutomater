@@ -1,0 +1,27 @@
+\documentclass[a4paper]{article}
+\usepackage{xcolor}
+\usepackage{flowfram}
+\usepackage{eso-pic,graphicx}
+\usepackage{tcolorbox}
+\pagestyle{empty}
+\DeclareTColorBox[use counter from=pabox]{mybox}{ O{red} m d"" !O{} } {enhanced,colframe=#1!75!black,colback=#1!5!white,
+fonttitle=\bfseries,title={\thetcbcounter~#2}, IfValueTF={#3}{watermark text={#3}}{},#4}
+\newflowframe{.475\textwidth}{.3\textheight}{0pt}{.7\textheight}[topleftsquare]
+\newflowframe{.475\textwidth}{.3\textheight}{.525\textwidth}{.7\textheight}[toprightsquare]
+\newflowframe{\textwidth}{.3\textheight}{0pt}{.35\textheight}[middlerect]
+\newflowframe{.475\textwidth}{.3\textheight}{0pt}{0pt}[leftsquare]
+\newflowframe{.475\textwidth}{.3\textheight}{.525\textwidth}{0pt}[rightsquare]
+\setallflowframes{border=plain, bordercolor=blue!50!black, backcolor=blue!25, textcolor=blue!25!black}
+\setflowframe*{topleftsquare}{backcolor=green!25, bordercolor=green!50!black, textcolor=green!25!black}
+\begin{document}
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{walkman}};
+\clearpage
+This will go in the first flow frame.
+If I keep typing, I'll eventually get to the next one.
+Instead, I could\newpage
+break the frame early, moving to the next frame at once.
+\begin{mybox}[purple]{My title}"All together"[coltitle=yellow]
+        This is a tcolorbox.
+        \end{mybox}
+  
+\end{document}
